@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Clientes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <table>
+{% extends 'nutricionista/base.html' %}
+
+{% block title %}
+    Lista de Pacientes
+{% endblock %}
+
+{% block conteudo %}
+     <table class="table">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -27,5 +26,6 @@
         {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+
+    <a href=" {% url 'inserir_paciente' %} "><button class="btn btn-primary">Cadastrar</button></a>
+{% endblock %}

@@ -1,36 +1,36 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulário</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+{% extends 'nutricionista/base.html' %}
 
-<!-- CRIANDO UM FORMULÁRIO DE FORMA AUTOMÁTICA SOMENTE UMA LINHA -->
-<!-- {{ form.as_p }} -->
+{% block title %}
+    Cadastro de Paciente
+{% endblock %}
 
-<!-- CRIANDO UM FORMULÁRIO DE FORMA MANUAL-->
-<form method="post">
-    {% csrf_token %}
-    <div>
-        <label> Nome:{{ form.nome }} </label>
-    </div>
-    <div>
-        <label> Sexo:{{ form.sexo }} </label>
-    </div>
-    <div>
-        <label> Peso:{{ form.peso }} </label>
-    </div>
-    <div>
-        <label> Altura:{{ form.altura }} </label>
-    </div>
-    <div>
-        <button type="submit">Cadastrar Paciente</button>
-    </div>
+{% block conteudo %}
+    <!-- CRIANDO UM FORMULÁRIO DE FORMA AUTOMÁTICA SOMENTE UMA LINHA -->
+    <!-- {{ form.as_p }} -->
 
-</form>
-
-
-</body>
-</html>
+    <!-- CRIANDO UM FORMULÁRIO DE FORMA MANUAL-->
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.nome.errors }}
+            <label> Nome:{{ form.nome }} </label>
+        </div>
+        <div class="mb-3">
+            {{ form.sexo.errors }}
+            <label> Sexo:{{ form.sexo }} </label>
+        </div>
+        <div class="mb-3">
+            {{ form.peso.errors }}
+            <label> Peso:{{ form.peso }} </label>
+        </div>
+        <div class="mb-3">
+            {{ form.altura.errors }}
+            <label> Altura:{{ form.altura }} </label>
+        </div>
+        <div class="mb-3">
+            <button type="submit">Cadastrar Paciente</button>
+        </div>
+    </form>
+    <hr>
+    <a href=" {% url 'listar_paciente' %} "><button class="btn btn-primary">Verificar Pacientes Cadastrados</button></a>
+{% endblock conteudo %}
